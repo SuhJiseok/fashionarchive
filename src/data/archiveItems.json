@@ -1,0 +1,463 @@
+﻿[
+    {
+        "code":  "ST-FW-001",
+        "label":  "img1",
+        "items":  [
+                      {
+                          "id":  "outer",
+                          "category":  "OUTER",
+                          "name":  "Black Padded Jacket",
+                          "description":  "Matte black padded outerwear with a relaxed, rounded volume."
+                      },
+                      {
+                          "id":  "hoodie",
+                          "category":  "TOP",
+                          "name":  "Navy Hooded Zip-Up",
+                          "description":  "Dark navy hooded zip-up layered under the padded jacket."
+                      },
+                      {
+                          "id":  "bag",
+                          "category":  "BAG",
+                          "name":  "White Crossbody Bag",
+                          "description":  "Compact white crossbody bag worn across the front."
+                      },
+                      {
+                          "id":  "denim",
+                          "category":  "BOTTOM",
+                          "name":  "Light Blue Distressed Jeans",
+                          "description":  "Light blue denim with a loose fit and distressed finish."
+                      },
+                      {
+                          "id":  "keychain",
+                          "category":  "ACCESSORY",
+                          "name":  "Pants Keychain",
+                          "description":  "Metal keychain accessory attached to the denim waist."
+                      },
+                      {
+                          "id":  "gloves",
+                          "category":  "ACCESSORY",
+                          "name":  "Black Leather Gloves",
+                          "description":  "Black leather gloves adding a sharp winter accent."
+                      },
+                      {
+                          "id":  "shoes",
+                          "category":  "SHOES",
+                          "name":  "Dark Burgundy Boat Shoes",
+                          "description":  "Deep burgundy boat shoes grounding the muted outfit palette."
+                      }
+                  ]
+    },
+    {
+        "code":  "ST-FW-002",
+        "label":  "img2",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-003",
+        "label":  "img3",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-004",
+        "label":  "img4",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-005",
+        "label":  "img5",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-006",
+        "label":  "img6",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-007",
+        "label":  "img7",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-008",
+        "label":  "img8",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-009",
+        "label":  "img9",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-010",
+        "label":  "img10",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-011",
+        "label":  "img11",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-012",
+        "label":  "img12",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-013",
+        "label":  "img13",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-014",
+        "label":  "img14",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-015",
+        "label":  "img15",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-016",
+        "label":  "img16",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-017",
+        "label":  "img17",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-018",
+        "label":  "img18",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-019",
+        "label":  "img19",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-020",
+        "label":  "img20",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-021",
+        "label":  "img21",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-022",
+        "label":  "img22",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-023",
+        "label":  "img23",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-024",
+        "label":  "img24",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-025",
+        "label":  "img25",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-026",
+        "label":  "img26",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-027",
+        "label":  "img27",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-028",
+        "label":  "img28",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-029",
+        "label":  "img29",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-030",
+        "label":  "img30",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-031",
+        "label":  "img31",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-032",
+        "label":  "img32",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-033",
+        "label":  "img33",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-034",
+        "label":  "img34",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-035",
+        "label":  "img35",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-036",
+        "label":  "img36",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-037",
+        "label":  "img37",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-038",
+        "label":  "img38",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-039",
+        "label":  "img39",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-040",
+        "label":  "img40",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-041",
+        "label":  "img41",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-042",
+        "label":  "img42",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-043",
+        "label":  "img43",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-044",
+        "label":  "img44",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-045",
+        "label":  "img45",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-046",
+        "label":  "img46",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-047",
+        "label":  "img47",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-048",
+        "label":  "img48",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-049",
+        "label":  "img49",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-050",
+        "label":  "img50",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-051",
+        "label":  "img51",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-052",
+        "label":  "img52",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-053",
+        "label":  "img53",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-054",
+        "label":  "img54",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-055",
+        "label":  "img55",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-056",
+        "label":  "img56",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-057",
+        "label":  "img57",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-058",
+        "label":  "img58",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-059",
+        "label":  "img59",
+        "items":  [
+
+                  ]
+    },
+    {
+        "code":  "ST-FW-060",
+        "label":  "img60",
+        "items":  [
+
+                  ]
+    }
+]
