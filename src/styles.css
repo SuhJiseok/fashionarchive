@@ -1186,9 +1186,9 @@ button {
       26px
       max(30px, calc(env(safe-area-inset-bottom) + 24px));
     overflow: hidden;
-    background: rgb(255 255 255 / 42%);
-    backdrop-filter: blur(14px) saturate(116%);
-    -webkit-backdrop-filter: blur(14px) saturate(116%);
+    background: rgb(255 255 255 / 24%);
+    backdrop-filter: blur(10px) saturate(118%);
+    -webkit-backdrop-filter: blur(10px) saturate(118%);
     opacity: 0;
     pointer-events: none;
     touch-action: none;
@@ -1216,9 +1216,9 @@ button {
     inset: 0;
     background: linear-gradient(
       180deg,
-      rgb(255 255 255 / 22%) 0%,
-      rgb(255 255 255 / 34%) 46%,
-      rgb(255 255 255 / 54%) 100%
+      rgb(255 255 255 / 8%) 0%,
+      rgb(255 255 255 / 16%) 46%,
+      rgb(255 255 255 / 34%) 100%
     );
     content: "";
     pointer-events: none;
