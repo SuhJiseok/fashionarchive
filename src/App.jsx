@@ -214,10 +214,13 @@ export default function App() {
   const [expandedProductId, setExpandedProductId] = useState(null);
   const [activeView, setActiveView] = useState('side');
   const activeIndexRef = useRef(activeIndex);
+  const carouselTouchRef = useRef(null);
+  const suppressSlideClickRef = useRef(false);
   const wheelAccumulator = useRef(0);
   const wheelLock = useRef(false);
   const viewportWidth = useViewportWidth();
 
+  const isMobileViewport = viewportWidth <= 720;
   const radius = clamp(viewportWidth * 0.42, 460, 820);
   const angleStep = viewportWidth < 720 ? 16 : 13;
   const maxVisibleDistance = viewportWidth < 720 ? 3 : 6;
@@ -399,6 +402,55 @@ export default function App() {
     setIsDetailOpen(false);
   }, []);
 
+  const handleCarouselTouchStart = useCallback(
+    (event) => {
+      if (!isMobileViewport || isModalOpen || isDetailOpen || event.touches.length !== 1) {
+        carouselTouchRef.current = null;
+        return;
+      }
+
+      const touch = event.touches[0];
+
+      carouselTouchRef.current = {
+        startX: touch.clientX,
+        startY: touch.clientY,
+      };
+    },
+    [isDetailOpen, isMobileViewport, isModalOpen],
+  );
+
+  const handleCarouselTouchEnd = useCallback(
+    (event) => {
+      const touchStart = carouselTouchRef.current;
+      carouselTouchRef.current = null;
+
+      if (!touchStart || !isMobileViewport || isModalOpen || isDetailOpen) {
+        return;
+      }
+
+      const touch = event.changedTouches[0];
+      const deltaX = touch.clientX - touchStart.startX;
+      const deltaY = touch.clientY - touchStart.startY;
+      const isHorizontalSwipe = Math.abs(deltaX) > 42 && Math.abs(deltaX) > Math.abs(deltaY) * 1.25;
+
+      if (!isHorizontalSwipe) {
+        return;
+      }
+
+      suppressSlideClickRef.current = true;
+      window.setTimeout(() => {
+        suppressSlideClickRef.current = false;
+      }, 320);
+
+      moveToIndex(activeIndexRef.current + (deltaX < 0 ? 1 : -1));
+    },
+    [isDetailOpen, isMobileViewport, isModalOpen, moveToIndex],
+  );
+
+  const handleCarouselTouchCancel = useCallback(() => {
+    carouselTouchRef.current = null;
+  }, []);
+
   return (
     <main
       className={`archive-page ${isDetailOpen ? 'is-detail-open' : ''}`}
@@ -561,7 +613,13 @@ export default function App() {
         )}
       </aside>
 
-      <section className="carousel-shell" aria-label="Archive image carousel">
+      <section
+        className="carousel-shell"
+        aria-label="Archive image carousel"
+        onTouchStart={handleCarouselTouchStart}
+        onTouchEnd={handleCarouselTouchEnd}
+        onTouchCancel={handleCarouselTouchCancel}
+      >
         <div
           className="carousel-orbit"
           style={{
@@ -586,6 +644,11 @@ export default function App() {
                 aria-label={`${item.code} view`}
                 aria-current={isActive}
                 onClick={() => {
+                  if (suppressSlideClickRef.current) {
+                    suppressSlideClickRef.current = false;
+                    return;
+                  }
+
                   if (isDetailOpen) {
                     closeDetailView();
                     return;
