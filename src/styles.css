@@ -1057,8 +1057,8 @@ button {
   }
 
   .main-display {
-    top: 72px;
-    width: min(42vw, 212px);
+    top: 66px;
+    width: min(39vw, 198px);
   }
 
   .main-card.is-mobile-crossfade {
@@ -1078,9 +1078,9 @@ button {
   }
 
   .archive-page.is-detail-open .main-display {
-    top: 70px;
+    top: 64px;
     left: 50%;
-    width: min(46vw, 226px);
+    width: min(43vw, 214px);
   }
 
   .detail-close-button {
