@@ -1039,19 +1039,29 @@ button {
 @media (max-width: 720px) {
   html,
   body {
-    overflow: hidden;
-    overscroll-behavior: none;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior-x: none;
+    overscroll-behavior-y: auto;
   }
 
   .archive-page {
-    min-height: 680px;
-    overscroll-behavior: none;
-    touch-action: none;
+    height: 100dvh;
+    min-height: 100dvh;
+    overscroll-behavior-x: none;
+    overscroll-behavior-y: auto;
+    touch-action: auto;
   }
 
   .archive-header {
     top: 24px;
     justify-content: flex-start;
+    touch-action: pan-y;
+  }
+
+  .main-display,
+  .archive-meta {
+    touch-action: none;
   }
 
   .search-input {

@@ -32,6 +32,11 @@ const normalizeAssetKey = (value) =>
 
 const removeExtension = (value) => value.replace(/\.[^/.]+$/, '');
 
+const isArchiveHeaderTarget = (target) =>
+  typeof Element !== 'undefined'
+  && target instanceof Element
+  && Boolean(target.closest('.archive-header'));
+
 const createAssetLookup = (modules, rootDirectory) => {
   const byPath = {};
   const byFileName = {};
@@ -442,8 +447,10 @@ export default function App() {
       }
 
       const touch = event.touches[0];
+      const allowNativeScroll = isArchiveHeaderTarget(event.target);
 
       detailTouchRef.current = {
+        allowNativeScroll,
         startX: touch.clientX,
         startY: touch.clientY,
       };
@@ -457,6 +464,10 @@ export default function App() {
       detailTouchRef.current = null;
 
       if (!touchStart || !isMobileViewport || isModalOpen) {
+        return;
+      }
+
+      if (touchStart.allowNativeScroll) {
         return;
       }
 
@@ -509,6 +520,10 @@ export default function App() {
   const handleArchiveTouchMove = useCallback(
     (event) => {
       if (!isMobileViewport || isModalOpen) {
+        return;
+      }
+
+      if (detailTouchRef.current?.allowNativeScroll) {
         return;
       }
 
