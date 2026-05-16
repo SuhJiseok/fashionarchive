@@ -1089,6 +1089,23 @@ button {
     height: 30px;
   }
 
+  .archive-page:not(.is-detail-open) .detail-close-button,
+  .archive-page:not(.is-detail-open) .detail-close-button:hover {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-8px, -8px);
+  }
+
+  .archive-page.is-detail-open .detail-close-button {
+    visibility: visible;
+  }
+
+  .archive-page.is-detail-open .detail-close-button:hover {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+
   .detail-close-button svg {
     width: 19px;
     height: 19px;
