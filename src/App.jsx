@@ -256,23 +256,29 @@ export default function App() {
       src: activeItem.views[viewType.id],
     }))
     .filter((view) => view.src);
-  const useMobileIndexCrossfade = isMobileViewport && !isDetailOpen;
+  const useMobileImageStack = isMobileViewport;
   const mobileMainImages = useMemo(
     () =>
-      items
-        .map((item, index) => {
-          const viewId = item.views.side
-            ? 'side'
-            : getAvailableViewIds(item)[0] ?? 'side';
+      isDetailOpen
+        ? activeViewImages.map((view) => ({
+            id: view.id === fallbackView ? activeItem.id : `${activeItem.id}-${view.id}`,
+            isActive: resolvedActiveView === view.id,
+            src: view.src,
+          }))
+        : items
+            .map((item, index) => {
+              const viewId = item.views.side
+                ? 'side'
+                : getAvailableViewIds(item)[0] ?? 'side';
 
-          return {
-            id: item.id,
-            isActive: index === activeIndex,
-            src: item.views[viewId] ?? item.imageSrc,
-          };
-        })
-        .filter((item) => item.src),
-    [activeIndex, items],
+              return {
+                id: item.id,
+                isActive: index === activeIndex,
+                src: item.views[viewId] ?? item.imageSrc,
+              };
+            })
+            .filter((item) => item.src),
+    [activeIndex, activeItem.id, activeViewImages, fallbackView, isDetailOpen, items, resolvedActiveView],
   );
   const isProductInfoVisible = isDetailOpen && (!isMobileViewport || isMobileInfoOpen);
 
@@ -588,7 +594,7 @@ export default function App() {
 
         <div
           className={`main-card ${activeImageSrc ? 'has-image' : ''} ${
-            useMobileIndexCrossfade ? 'is-mobile-crossfade' : ''
+            useMobileImageStack ? 'is-mobile-image-stack' : ''
           }`}
           key={isMobileViewport ? 'mobile-main-card' : activeItem.id}
           role="button"
@@ -610,10 +616,10 @@ export default function App() {
           }}
           onKeyDown={handleMainCardKeyDown}
         >
-          {useMobileIndexCrossfade
+          {useMobileImageStack
             ? mobileMainImages.map((item) => (
                 <img
-                  className={`archive-image archive-view-image mobile-main-image ${
+                  className={`archive-image archive-view-image mobile-stack-image ${
                     item.isActive ? 'is-active' : ''
                   }`}
                   key={item.id}

@@ -1059,32 +1059,34 @@ button {
   .main-display {
     top: 66px;
     width: min(39vw, 198px);
+    transform: translate3d(-50%, 0, 0);
   }
 
   .main-card {
     animation: none;
   }
 
-  .main-card.is-mobile-crossfade {
+  .main-card.is-mobile-image-stack {
     animation: none;
   }
 
-  .main-card.is-mobile-crossfade .mobile-main-image {
-    transform: scale(0.985);
+  .main-card.is-mobile-image-stack .mobile-stack-image {
+    transform: translate3d(0, 0, 0) scale(0.992);
     transition:
       opacity 620ms cubic-bezier(0.22, 1, 0.36, 1),
       transform 760ms cubic-bezier(0.22, 1, 0.36, 1);
+    backface-visibility: hidden;
     will-change: opacity, transform;
   }
 
-  .main-card.is-mobile-crossfade .mobile-main-image.is-active {
-    transform: scale(1);
+  .main-card.is-mobile-image-stack .mobile-stack-image.is-active {
+    transform: translate3d(0, 0, 0) scale(1);
   }
 
   .archive-page.is-detail-open .main-display {
-    top: 92px;
+    top: 96px;
     left: 50%;
-    width: min(56vw, 268px);
+    width: min(64vw, 304px);
   }
 
   .detail-close-button {
