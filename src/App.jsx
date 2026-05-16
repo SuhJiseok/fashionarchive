@@ -643,10 +643,10 @@ export default function App() {
         <button
           className="product-info-close-button"
           type="button"
-          aria-label="Close item information"
+          aria-label="Hide item information"
           onClick={() => setIsMobileInfoOpen(false)}
         >
-          <X aria-hidden="true" strokeWidth={1.6} />
+          <ChevronDown aria-hidden="true" strokeWidth={1.8} />
         </button>
 
         <header className="product-panel-header">
