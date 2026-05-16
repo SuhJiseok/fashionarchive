@@ -1092,7 +1092,7 @@ button {
     top: 84px;
     left: 50%;
     width: min(39vw, 198px);
-    transform: translate3d(-50%, 0, 0) scale(1.9);
+    transform: translate3d(-50%, 0, 0) scale(1.55);
   }
 
   .detail-close-button {
