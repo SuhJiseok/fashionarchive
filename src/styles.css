@@ -1092,14 +1092,14 @@ button {
   }
 
   .archive-page.is-detail-open .main-display {
-    top: 56px;
+    top: 84px;
     left: 50%;
     width: min(39vw, 198px);
     transform: translate3d(-50%, 0, 0);
   }
 
   .archive-page.is-detail-open .main-card {
-    transform: translate3d(0, 0, 0) scale(1.36);
+    transform: translate3d(0, -28px, 0) scale(1.36);
   }
 
   .archive-page.is-detail-open .detail-icon-rail {
