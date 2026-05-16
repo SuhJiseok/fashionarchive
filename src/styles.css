@@ -1057,14 +1057,14 @@ button {
   }
 
   .main-display {
-    top: 96px;
-    width: min(54vw, 262px);
+    top: 88px;
+    width: min(50vw, 244px);
   }
 
   .archive-page.is-detail-open .main-display {
-    top: 94px;
+    top: 86px;
     left: 50%;
-    width: min(58vw, 272px);
+    width: min(54vw, 252px);
   }
 
   .detail-close-button {
