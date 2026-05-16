@@ -1058,13 +1058,13 @@ button {
 
   .main-display {
     top: 96px;
-    width: min(58vw, 278px);
+    width: min(54vw, 262px);
   }
 
   .archive-page.is-detail-open .main-display {
     top: 94px;
     left: 50%;
-    width: min(62vw, 286px);
+    width: min(58vw, 272px);
   }
 
   .detail-close-button {
@@ -1145,6 +1145,10 @@ button {
     height: 138px;
     left: -44px;
     top: -69px;
+  }
+
+  .slide-card.is-active {
+    box-shadow: none;
   }
 
   .archive-meta {
