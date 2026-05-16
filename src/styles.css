@@ -1061,6 +1061,22 @@ button {
     width: min(50vw, 244px);
   }
 
+  .main-card.is-mobile-crossfade {
+    animation: none;
+  }
+
+  .main-card.is-mobile-crossfade .mobile-main-image {
+    transform: scale(0.985);
+    transition:
+      opacity 620ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 760ms cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+
+  .main-card.is-mobile-crossfade .mobile-main-image.is-active {
+    transform: scale(1);
+  }
+
   .archive-page.is-detail-open .main-display {
     top: 86px;
     left: 50%;

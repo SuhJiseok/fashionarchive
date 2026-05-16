@@ -253,6 +253,24 @@ export default function App() {
       src: activeItem.views[viewType.id],
     }))
     .filter((view) => view.src);
+  const useMobileIndexCrossfade = isMobileViewport && !isDetailOpen;
+  const mobileMainImages = useMemo(
+    () =>
+      items
+        .map((item, index) => {
+          const viewId = item.views.side
+            ? 'side'
+            : getAvailableViewIds(item)[0] ?? 'side';
+
+          return {
+            id: item.id,
+            isActive: index === activeIndex,
+            src: item.views[viewId] ?? item.imageSrc,
+          };
+        })
+        .filter((item) => item.src),
+    [activeIndex, items],
+  );
 
   useEffect(() => {
     activeIndexRef.current = activeIndex;
@@ -505,8 +523,10 @@ export default function App() {
         </nav>
 
         <div
-          className={`main-card ${activeImageSrc ? 'has-image' : ''}`}
-          key={activeItem.id}
+          className={`main-card ${activeImageSrc ? 'has-image' : ''} ${
+            useMobileIndexCrossfade ? 'is-mobile-crossfade' : ''
+          }`}
+          key={useMobileIndexCrossfade ? 'mobile-main-card' : activeItem.id}
           role="button"
           tabIndex={0}
           aria-label={isDetailOpen ? 'Close image detail' : 'Open image detail'}
@@ -521,18 +541,31 @@ export default function App() {
           }}
           onKeyDown={handleMainCardKeyDown}
         >
-          {activeViewImages.map((view) => (
-            <img
-              className={`archive-image archive-view-image ${
-                resolvedActiveView === view.id ? 'is-active' : ''
-              }`}
-              key={view.id}
-              src={view.src}
-              alt=""
-              draggable="false"
-              aria-hidden={resolvedActiveView !== view.id}
-            />
-          ))}
+          {useMobileIndexCrossfade
+            ? mobileMainImages.map((item) => (
+                <img
+                  className={`archive-image archive-view-image mobile-main-image ${
+                    item.isActive ? 'is-active' : ''
+                  }`}
+                  key={item.id}
+                  src={item.src}
+                  alt=""
+                  draggable="false"
+                  aria-hidden={!item.isActive}
+                />
+              ))
+            : activeViewImages.map((view) => (
+                <img
+                  className={`archive-image archive-view-image ${
+                    resolvedActiveView === view.id ? 'is-active' : ''
+                  }`}
+                  key={view.id}
+                  src={view.src}
+                  alt=""
+                  draggable="false"
+                  aria-hidden={resolvedActiveView !== view.id}
+                />
+              ))}
           <span className="image-label">{activeItem.label}</span>
         </div>
       </section>
