@@ -399,6 +399,10 @@ button {
   transform: translateX(0);
 }
 
+.product-info-close-button {
+  display: none;
+}
+
 .product-panel-header {
   display: flex;
   align-items: center;
@@ -1231,6 +1235,31 @@ button {
     max-width: 420px;
     margin-right: auto;
     margin-left: auto;
+  }
+
+  .product-info-panel > .product-info-close-button {
+    position: absolute;
+    top: max(22px, calc(env(safe-area-inset-top) + 12px));
+    left: 22px;
+    z-index: 2;
+    display: grid;
+    width: 36px;
+    height: 36px;
+    max-width: none;
+    place-items: center;
+    margin: 0;
+    border: 1px solid rgb(17 17 17 / 68%);
+    border-radius: 999px;
+    background: rgb(255 255 255 / 42%);
+    color: #111111;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .product-info-close-button svg {
+    width: 18px;
+    height: 18px;
   }
 
   .product-panel-header {

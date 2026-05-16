@@ -640,6 +640,15 @@ export default function App() {
         aria-live="polite"
         aria-hidden={!isProductInfoVisible}
       >
+        <button
+          className="product-info-close-button"
+          type="button"
+          aria-label="Close item information"
+          onClick={() => setIsMobileInfoOpen(false)}
+        >
+          <X aria-hidden="true" strokeWidth={1.6} />
+        </button>
+
         <header className="product-panel-header">
           <p className="product-panel-code">{activeItem.code}</p>
         </header>
