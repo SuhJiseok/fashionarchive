@@ -1092,7 +1092,7 @@ button {
   }
 
   .archive-page.is-detail-open .main-display {
-    top: 64px;
+    top: 56px;
     left: 50%;
     width: min(39vw, 198px);
     transform: translate3d(-50%, 0, 0);
