@@ -1078,9 +1078,9 @@ button {
   }
 
   .archive-page.is-detail-open .main-display {
-    top: 64px;
+    top: 92px;
     left: 50%;
-    width: min(43vw, 214px);
+    width: min(56vw, 268px);
   }
 
   .detail-close-button {
