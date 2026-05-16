@@ -1288,6 +1288,11 @@ button {
     color: #6f6f6f;
   }
 
+  .product-name {
+    color: #111111;
+    font-weight: 800;
+  }
+
   .product-description {
     color: #2d2d2d;
     font-weight: 700;
