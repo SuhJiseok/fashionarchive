@@ -1280,6 +1280,19 @@ button {
     max-height: 118px;
   }
 
+  .product-index {
+    color: #777777;
+  }
+
+  .product-category {
+    color: #6f6f6f;
+  }
+
+  .product-description {
+    color: #2d2d2d;
+    font-weight: 700;
+  }
+
   .product-detail-inner {
     grid-template-columns: 68px minmax(0, 1fr);
     gap: 12px;
