@@ -211,10 +211,13 @@ export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isCodeGroupMode, setIsCodeGroupMode] = useState(false);
   const [isDetailOpen, setIsDetailOpen] = useState(false);
+  const [isMobileInfoOpen, setIsMobileInfoOpen] = useState(false);
   const [expandedProductId, setExpandedProductId] = useState(null);
   const [activeView, setActiveView] = useState('side');
   const activeIndexRef = useRef(activeIndex);
   const carouselTouchRef = useRef(null);
+  const detailTouchRef = useRef(null);
+  const suppressMainCardClickRef = useRef(false);
   const suppressSlideClickRef = useRef(false);
   const wheelAccumulator = useRef(0);
   const wheelLock = useRef(false);
@@ -271,6 +274,7 @@ export default function App() {
         .filter((item) => item.src),
     [activeIndex, items],
   );
+  const isProductInfoVisible = isDetailOpen && (!isMobileViewport || isMobileInfoOpen);
 
   useEffect(() => {
     activeIndexRef.current = activeIndex;
@@ -280,12 +284,16 @@ export default function App() {
   useEffect(() => {
     setExpandedProductId(null);
     setIsCodeGroupMode(false);
+    setIsMobileInfoOpen(false);
   }, [activeIndex, isDetailOpen]);
 
   useEffect(() => {
     if (!isModalOpen) {
       setIsCodeGroupMode(false);
+      return;
     }
+
+    setIsMobileInfoOpen(false);
   }, [isModalOpen]);
 
   const moveToIndex = useCallback(
@@ -417,7 +425,58 @@ export default function App() {
 
   const closeDetailView = useCallback(() => {
     setActiveView('side');
+    setIsMobileInfoOpen(false);
     setIsDetailOpen(false);
+  }, []);
+
+  const handleDetailTouchStart = useCallback(
+    (event) => {
+      if (!isMobileViewport || !isDetailOpen || isModalOpen || event.touches.length !== 1) {
+        detailTouchRef.current = null;
+        return;
+      }
+
+      const touch = event.touches[0];
+
+      detailTouchRef.current = {
+        startX: touch.clientX,
+        startY: touch.clientY,
+      };
+    },
+    [isDetailOpen, isMobileViewport, isModalOpen],
+  );
+
+  const handleDetailTouchEnd = useCallback(
+    (event) => {
+      const touchStart = detailTouchRef.current;
+      detailTouchRef.current = null;
+
+      if (!touchStart || !isMobileViewport || !isDetailOpen || isModalOpen) {
+        return;
+      }
+
+      const touch = event.changedTouches[0];
+      const deltaX = touch.clientX - touchStart.startX;
+      const deltaY = touch.clientY - touchStart.startY;
+      const isVerticalSwipe = Math.abs(deltaY) > 48 && Math.abs(deltaY) > Math.abs(deltaX) * 1.25;
+
+      if (!isVerticalSwipe) {
+        return;
+      }
+
+      event.preventDefault();
+      suppressMainCardClickRef.current = true;
+      window.setTimeout(() => {
+        suppressMainCardClickRef.current = false;
+      }, 320);
+
+      setIsMobileInfoOpen(deltaY < 0);
+    },
+    [isDetailOpen, isMobileViewport, isModalOpen],
+  );
+
+  const handleDetailTouchCancel = useCallback(() => {
+    detailTouchRef.current = null;
   }, []);
 
   const handleCarouselTouchStart = useCallback(
@@ -471,8 +530,13 @@ export default function App() {
 
   return (
     <main
-      className={`archive-page ${isDetailOpen ? 'is-detail-open' : ''}`}
+      className={`archive-page ${isDetailOpen ? 'is-detail-open' : ''} ${
+        isMobileInfoOpen ? 'is-mobile-info-open' : ''
+      }`}
       aria-label="Fashion archive carousel"
+      onTouchStart={handleDetailTouchStart}
+      onTouchEnd={handleDetailTouchEnd}
+      onTouchCancel={handleDetailTouchCancel}
     >
       <header className="archive-header">
         <label className="search-shell" aria-label="Search archive">
@@ -532,6 +596,11 @@ export default function App() {
           aria-label={isDetailOpen ? 'Close image detail' : 'Open image detail'}
           aria-pressed={isDetailOpen}
           onClick={() => {
+            if (suppressMainCardClickRef.current) {
+              suppressMainCardClickRef.current = false;
+              return;
+            }
+
             if (isDetailOpen) {
               closeDetailView();
               return;
@@ -573,7 +642,7 @@ export default function App() {
       <aside
         className="product-info-panel"
         aria-live="polite"
-        aria-hidden={!isDetailOpen}
+        aria-hidden={!isProductInfoVisible}
       >
         <header className="product-panel-header">
           <p className="product-panel-code">{activeItem.code}</p>
