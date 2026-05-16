@@ -1033,8 +1033,16 @@ button {
 }
 
 @media (max-width: 720px) {
+  html,
+  body {
+    overflow: hidden;
+    overscroll-behavior: none;
+  }
+
   .archive-page {
     min-height: 680px;
+    overscroll-behavior: none;
+    touch-action: none;
   }
 
   .archive-header {
@@ -1160,7 +1168,7 @@ button {
 
   .carousel-shell {
     pointer-events: auto;
-    touch-action: pan-y;
+    touch-action: none;
   }
 
   .product-info-panel {

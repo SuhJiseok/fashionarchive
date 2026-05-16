@@ -215,7 +215,6 @@ export default function App() {
   const [expandedProductId, setExpandedProductId] = useState(null);
   const [activeView, setActiveView] = useState('side');
   const activeIndexRef = useRef(activeIndex);
-  const carouselTouchRef = useRef(null);
   const detailTouchRef = useRef(null);
   const suppressMainCardClickRef = useRef(false);
   const suppressSlideClickRef = useRef(false);
@@ -437,7 +436,7 @@ export default function App() {
 
   const handleDetailTouchStart = useCallback(
     (event) => {
-      if (!isMobileViewport || !isDetailOpen || isModalOpen || event.touches.length !== 1) {
+      if (!isMobileViewport || isModalOpen || event.touches.length !== 1) {
         detailTouchRef.current = null;
         return;
       }
@@ -449,7 +448,7 @@ export default function App() {
         startY: touch.clientY,
       };
     },
-    [isDetailOpen, isMobileViewport, isModalOpen],
+    [isMobileViewport, isModalOpen],
   );
 
   const handleDetailTouchEnd = useCallback(
@@ -457,82 +456,66 @@ export default function App() {
       const touchStart = detailTouchRef.current;
       detailTouchRef.current = null;
 
-      if (!touchStart || !isMobileViewport || !isDetailOpen || isModalOpen) {
+      if (!touchStart || !isMobileViewport || isModalOpen) {
         return;
       }
 
       const touch = event.changedTouches[0];
       const deltaX = touch.clientX - touchStart.startX;
       const deltaY = touch.clientY - touchStart.startY;
-      const isVerticalSwipe = Math.abs(deltaY) > 48 && Math.abs(deltaY) > Math.abs(deltaX) * 1.25;
+      const absDeltaX = Math.abs(deltaX);
+      const absDeltaY = Math.abs(deltaY);
+      const isVerticalSwipe = absDeltaY > 48 && absDeltaY > absDeltaX * 1.25;
 
-      if (!isVerticalSwipe) {
+      if (isDetailOpen) {
+        if (!isVerticalSwipe) {
+          return;
+        }
+
+        event.preventDefault();
+        suppressMainCardClickRef.current = true;
+        window.setTimeout(() => {
+          suppressMainCardClickRef.current = false;
+        }, 320);
+
+        setIsMobileInfoOpen(deltaY < 0);
+        return;
+      }
+
+      if (Math.max(absDeltaX, absDeltaY) <= 42) {
         return;
       }
 
       event.preventDefault();
       suppressMainCardClickRef.current = true;
+      suppressSlideClickRef.current = true;
       window.setTimeout(() => {
         suppressMainCardClickRef.current = false;
+        suppressSlideClickRef.current = false;
       }, 320);
 
-      setIsMobileInfoOpen(deltaY < 0);
+      const isHorizontalIntent = absDeltaX >= absDeltaY;
+      const shouldMoveNext = isHorizontalIntent ? deltaX < 0 : deltaY < 0;
+
+      moveToIndex(activeIndexRef.current + (shouldMoveNext ? 1 : -1));
     },
-    [isDetailOpen, isMobileViewport, isModalOpen],
+    [isDetailOpen, isMobileViewport, isModalOpen, moveToIndex],
   );
 
   const handleDetailTouchCancel = useCallback(() => {
     detailTouchRef.current = null;
   }, []);
 
-  const handleCarouselTouchStart = useCallback(
+  const handleArchiveTouchMove = useCallback(
     (event) => {
-      if (!isMobileViewport || isModalOpen || isDetailOpen || event.touches.length !== 1) {
-        carouselTouchRef.current = null;
+      if (!isMobileViewport || isModalOpen) {
         return;
       }
 
-      const touch = event.touches[0];
-
-      carouselTouchRef.current = {
-        startX: touch.clientX,
-        startY: touch.clientY,
-      };
+      event.preventDefault();
     },
-    [isDetailOpen, isMobileViewport, isModalOpen],
+    [isMobileViewport, isModalOpen],
   );
-
-  const handleCarouselTouchEnd = useCallback(
-    (event) => {
-      const touchStart = carouselTouchRef.current;
-      carouselTouchRef.current = null;
-
-      if (!touchStart || !isMobileViewport || isModalOpen || isDetailOpen) {
-        return;
-      }
-
-      const touch = event.changedTouches[0];
-      const deltaX = touch.clientX - touchStart.startX;
-      const deltaY = touch.clientY - touchStart.startY;
-      const isHorizontalSwipe = Math.abs(deltaX) > 42 && Math.abs(deltaX) > Math.abs(deltaY) * 1.25;
-
-      if (!isHorizontalSwipe) {
-        return;
-      }
-
-      suppressSlideClickRef.current = true;
-      window.setTimeout(() => {
-        suppressSlideClickRef.current = false;
-      }, 320);
-
-      moveToIndex(activeIndexRef.current + (deltaX < 0 ? 1 : -1));
-    },
-    [isDetailOpen, isMobileViewport, isModalOpen, moveToIndex],
-  );
-
-  const handleCarouselTouchCancel = useCallback(() => {
-    carouselTouchRef.current = null;
-  }, []);
 
   return (
     <main
@@ -541,6 +524,7 @@ export default function App() {
       }`}
       aria-label="Fashion archive carousel"
       onTouchStart={handleDetailTouchStart}
+      onTouchMove={handleArchiveTouchMove}
       onTouchEnd={handleDetailTouchEnd}
       onTouchCancel={handleDetailTouchCancel}
     >
@@ -730,9 +714,6 @@ export default function App() {
       <section
         className="carousel-shell"
         aria-label="Archive image carousel"
-        onTouchStart={handleCarouselTouchStart}
-        onTouchEnd={handleCarouselTouchEnd}
-        onTouchCancel={handleCarouselTouchCancel}
       >
         <div
           className="carousel-orbit"
