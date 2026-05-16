@@ -598,7 +598,13 @@ export default function App() {
           key={isMobileViewport ? 'mobile-main-card' : activeItem.id}
           role="button"
           tabIndex={0}
-          aria-label={isDetailOpen ? 'Close image detail' : 'Open image detail'}
+          aria-label={
+            isDetailOpen && isMobileViewport
+              ? 'Open item information'
+              : isDetailOpen
+                ? 'Close image detail'
+                : 'Open image detail'
+          }
           aria-pressed={isDetailOpen}
           onClick={() => {
             if (suppressMainCardClickRef.current) {
@@ -607,6 +613,11 @@ export default function App() {
             }
 
             if (isDetailOpen) {
+              if (isMobileViewport) {
+                setIsMobileInfoOpen(true);
+                return;
+              }
+
               closeDetailView();
               return;
             }
