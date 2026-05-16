@@ -1061,6 +1061,10 @@ button {
     width: min(39vw, 198px);
   }
 
+  .main-card {
+    animation: none;
+  }
+
   .main-card.is-mobile-crossfade {
     animation: none;
   }

@@ -590,7 +590,7 @@ export default function App() {
           className={`main-card ${activeImageSrc ? 'has-image' : ''} ${
             useMobileIndexCrossfade ? 'is-mobile-crossfade' : ''
           }`}
-          key={useMobileIndexCrossfade ? 'mobile-main-card' : activeItem.id}
+          key={isMobileViewport ? 'mobile-main-card' : activeItem.id}
           role="button"
           tabIndex={0}
           aria-label={isDetailOpen ? 'Close image detail' : 'Open image detail'}
@@ -628,7 +628,13 @@ export default function App() {
                   className={`archive-image archive-view-image ${
                     resolvedActiveView === view.id ? 'is-active' : ''
                   }`}
-                  key={view.id}
+                  key={
+                    isMobileViewport
+                      ? view.id === fallbackView
+                        ? activeItem.id
+                        : `${activeItem.id}-${view.id}`
+                      : view.id
+                  }
                   src={view.src}
                   alt=""
                   draggable="false"
