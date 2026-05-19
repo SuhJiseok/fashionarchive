@@ -489,7 +489,37 @@ export default function App() {
           suppressMainCardClickRef.current = false;
         }, 320);
 
-        setIsMobileInfoOpen(deltaY < 0);
+        if (isMobileInfoOpen) {
+          if (deltaY > 0) {
+            setIsMobileInfoOpen(false);
+          }
+
+          return;
+        }
+
+        const availableViewIds = getAvailableViewIds(activeItem);
+        const currentViewIndex = Math.max(0, availableViewIds.indexOf(resolvedActiveView));
+
+        if (deltaY < 0) {
+          const nextViewId = availableViewIds[currentViewIndex + 1];
+
+          if (nextViewId) {
+            setActiveView(nextViewId);
+            return;
+          }
+
+          setIsMobileInfoOpen(true);
+          return;
+        }
+
+        const previousViewId = availableViewIds[currentViewIndex - 1];
+
+        if (previousViewId) {
+          setActiveView(previousViewId);
+          return;
+        }
+
+        setIsMobileInfoOpen(false);
         return;
       }
 
@@ -510,7 +540,15 @@ export default function App() {
 
       moveToIndex(activeIndexRef.current + (shouldMoveNext ? 1 : -1));
     },
-    [isDetailOpen, isMobileViewport, isModalOpen, moveToIndex],
+    [
+      activeItem,
+      isDetailOpen,
+      isMobileInfoOpen,
+      isMobileViewport,
+      isModalOpen,
+      moveToIndex,
+      resolvedActiveView,
+    ],
   );
 
   const handleDetailTouchCancel = useCallback(() => {
