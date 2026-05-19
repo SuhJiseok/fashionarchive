@@ -1287,7 +1287,7 @@ button {
   }
 
   .product-list-item.is-expanded .product-accordion-panel {
-    max-height: 164px;
+    max-height: 216px;
   }
 
   .product-index {
@@ -1324,14 +1324,14 @@ button {
   }
 
   .product-detail-inner {
-    grid-template-columns: 104px minmax(0, 1fr);
+    grid-template-columns: clamp(112px, 34vw, 136px) minmax(0, 1fr);
     gap: 14px;
-    padding: 4px 0 18px 38px;
+    padding: 6px 0 22px 34px;
   }
 
   .product-thumb-frame {
-    width: 104px;
-    height: 132px;
+    width: clamp(112px, 34vw, 136px);
+    height: clamp(142px, 42vw, 172px);
   }
 
   .carousel-orbit {
