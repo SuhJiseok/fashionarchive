@@ -520,7 +520,7 @@ export default function App() {
           return;
         }
 
-        setIsMobileInfoOpen(false);
+        closeDetailView();
         return;
       }
 
@@ -547,6 +547,7 @@ export default function App() {
       isMobileInfoOpen,
       isMobileViewport,
       isModalOpen,
+      closeDetailView,
       moveToIndex,
       resolvedActiveView,
     ],
