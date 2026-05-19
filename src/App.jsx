@@ -715,9 +715,10 @@ export default function App() {
               ))}
           <span className="image-label">{activeItem.label}</span>
         </div>
-        <span
+        <button
           className="main-card-touch-extension"
-          aria-hidden="true"
+          type="button"
+          aria-label="Open image detail"
           onClick={() => setIsDetailOpen(true)}
         />
       </section>

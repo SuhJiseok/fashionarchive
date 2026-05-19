@@ -1084,6 +1084,7 @@ button {
 
   .main-display {
     top: 66px;
+    z-index: 30;
     width: min(39vw, 198px);
     transform: translate3d(-50%, 0, 0);
     transition:
@@ -1102,13 +1103,17 @@ button {
 
   .archive-page:not(.is-detail-open) .main-card-touch-extension {
     position: absolute;
-    top: 100%;
-    right: -6px;
-    left: -6px;
-    z-index: 2;
+    top: 76%;
+    right: -18px;
+    left: -18px;
+    z-index: 4;
     display: block;
-    height: 44px;
+    height: 112px;
+    border: 0;
+    background: transparent;
     cursor: zoom-in;
+    padding: 0;
+    pointer-events: auto;
     touch-action: none;
   }
 
