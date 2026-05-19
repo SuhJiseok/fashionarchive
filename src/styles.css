@@ -497,21 +497,21 @@ button {
 }
 
 .product-list-item.is-expanded .product-accordion-panel {
-  max-height: 168px;
+  max-height: 204px;
   opacity: 1;
 }
 
 .product-detail-inner {
   display: grid;
-  grid-template-columns: 108px minmax(0, 1fr);
-  gap: 20px;
-  padding: 2px 0 20px 52px;
+  grid-template-columns: 132px minmax(0, 1fr);
+  gap: 22px;
+  padding: 4px 0 24px 52px;
 }
 
 .product-thumb-frame {
   position: relative;
-  width: 108px;
-  height: 136px;
+  width: 132px;
+  height: 166px;
   overflow: hidden;
   background: #f8f8f8;
 }
