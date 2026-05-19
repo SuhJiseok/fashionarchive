@@ -431,7 +431,7 @@ button {
   margin: 0;
   color: #0a0a0a;
   font-size: 15px;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: 0;
 }
 
@@ -471,7 +471,7 @@ button {
 .product-index {
   color: #b0b0b0;
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0;
 }
 
@@ -529,7 +529,7 @@ button {
   place-items: center;
   color: #b8b8b8;
   font-size: 10px;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0;
 }
 
@@ -552,7 +552,7 @@ button {
   margin-bottom: 4px;
   color: #9a9a9a;
   font-size: 10px;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: 0;
 }
 
@@ -560,7 +560,7 @@ button {
   margin: 0;
   color: #0a0a0a;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0;
   line-height: 1.28;
   transition: color 180ms ease;
@@ -1334,7 +1334,7 @@ button {
 
   .product-name {
     color: #777777;
-    font-weight: 700;
+    font-weight: 600;
   }
 
   .product-description {
@@ -1352,7 +1352,7 @@ button {
 
   .product-list-item.is-expanded .product-name {
     color: #111111;
-    font-weight: 800;
+    font-weight: 700;
   }
 
   .product-detail-inner {
