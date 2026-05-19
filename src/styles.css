@@ -879,7 +879,7 @@ button {
   color: #b0b0b0;
   cursor: pointer;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0;
   padding: 0;
   text-align: left;
@@ -892,7 +892,7 @@ button {
 }
 
 .modal-code-button.is-active {
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .code-active-mark {
