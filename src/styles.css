@@ -1051,6 +1051,23 @@ button {
   }
 }
 
+@media (min-width: 1121px) {
+  .product-list-item.is-expanded .product-accordion-panel {
+    max-height: 244px;
+  }
+
+  .product-detail-inner {
+    grid-template-columns: 160px minmax(0, 1fr);
+    gap: 24px;
+    padding: 4px 0 30px 52px;
+  }
+
+  .product-thumb-frame {
+    width: 160px;
+    height: 202px;
+  }
+}
+
 @media (max-width: 720px) {
   html,
   body {
