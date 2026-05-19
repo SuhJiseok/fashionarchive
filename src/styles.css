@@ -1051,6 +1051,30 @@ button {
   }
 }
 
+@media (min-width: 721px) {
+  .product-list {
+    max-height: min(52vh, 520px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding-right: 6px;
+    scrollbar-color: rgb(0 0 0 / 18%) transparent;
+    scrollbar-width: thin;
+  }
+
+  .product-list::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  .product-list::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .product-list::-webkit-scrollbar-thumb {
+    background: rgb(0 0 0 / 18%);
+    border-radius: 999px;
+  }
+}
+
 @media (min-width: 1121px) {
   .product-list-item.is-expanded .product-accordion-panel {
     max-height: 244px;
