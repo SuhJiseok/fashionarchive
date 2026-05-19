@@ -662,7 +662,7 @@ export default function App() {
                 : 'Open image detail'
           }
           aria-pressed={isDetailOpen}
-          onClick={() => {
+          onClick={(event) => {
             if (suppressMainCardClickRef.current) {
               suppressMainCardClickRef.current = false;
               return;
@@ -670,6 +670,14 @@ export default function App() {
 
             if (isDetailOpen) {
               if (isMobileViewport) {
+                const targetBounds = event.currentTarget.getBoundingClientRect();
+                const tapOffsetY = event.clientY - targetBounds.top;
+                const bottomDeadZone = Math.min(56, targetBounds.height * 0.12);
+
+                if (tapOffsetY > targetBounds.height - bottomDeadZone) {
+                  return;
+                }
+
                 setIsMobileInfoOpen(true);
                 return;
               }
