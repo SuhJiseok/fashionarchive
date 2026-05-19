@@ -560,7 +560,7 @@ button {
   margin: 0;
   color: #0a0a0a;
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0;
   line-height: 1.28;
   transition: color 180ms ease;
@@ -1334,7 +1334,7 @@ button {
 
   .product-name {
     color: #777777;
-    font-weight: 600;
+    font-weight: 700;
   }
 
   .product-description {
