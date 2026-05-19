@@ -315,6 +315,17 @@ button {
   display: none;
 }
 
+.main-card-touch-extension,
+.main-card-touch-extension:active,
+.main-card-touch-extension:focus,
+.main-card-touch-extension:focus-visible {
+  -webkit-tap-highlight-color: transparent;
+  appearance: none;
+  background: transparent;
+  box-shadow: none;
+  outline: 0;
+}
+
 .archive-page.is-detail-open .main-card {
   cursor: zoom-out;
 }
