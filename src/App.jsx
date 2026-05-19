@@ -220,6 +220,7 @@ export default function App() {
   const [expandedProductId, setExpandedProductId] = useState(null);
   const [activeView, setActiveView] = useState('side');
   const activeIndexRef = useRef(activeIndex);
+  const archivePageRef = useRef(null);
   const detailTouchRef = useRef(null);
   const suppressMainCardClickRef = useRef(false);
   const suppressSlideClickRef = useRef(false);
@@ -561,23 +562,39 @@ export default function App() {
         return;
       }
 
-      if (detailTouchRef.current?.allowNativeScroll) {
+      const allowNativeScroll =
+        detailTouchRef.current?.allowNativeScroll ?? isArchiveHeaderTarget(event.target);
+
+      if (allowNativeScroll) {
         return;
       }
 
-      event.preventDefault();
+      if (event.cancelable) {
+        event.preventDefault();
+      }
     },
     [isMobileViewport, isModalOpen],
   );
 
+  useEffect(() => {
+    const archivePage = archivePageRef.current;
+
+    if (!archivePage) {
+      return undefined;
+    }
+
+    archivePage.addEventListener('touchmove', handleArchiveTouchMove, { passive: false });
+    return () => archivePage.removeEventListener('touchmove', handleArchiveTouchMove);
+  }, [handleArchiveTouchMove]);
+
   return (
     <main
+      ref={archivePageRef}
       className={`archive-page ${isDetailOpen ? 'is-detail-open' : ''} ${
         isMobileInfoOpen ? 'is-mobile-info-open' : ''
       }`}
       aria-label="Fashion archive carousel"
       onTouchStart={handleDetailTouchStart}
-      onTouchMove={handleArchiveTouchMove}
       onTouchEnd={handleDetailTouchEnd}
       onTouchCancel={handleDetailTouchCancel}
     >
