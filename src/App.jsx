@@ -675,6 +675,7 @@ export default function App() {
                 const bottomDeadZone = Math.min(56, targetBounds.height * 0.12);
 
                 if (tapOffsetY > targetBounds.height - bottomDeadZone) {
+                  closeDetailView();
                   return;
                 }
 
