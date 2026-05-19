@@ -1371,10 +1371,17 @@ button {
   }
 
   .slide-card {
+    -webkit-tap-highlight-color: transparent;
     width: 88px;
     height: 138px;
     left: -44px;
     top: -69px;
+  }
+
+  .slide-card:active,
+  .slide-card:focus,
+  .slide-card:focus-visible {
+    outline: 0;
   }
 
   .slide-card.is-active {
