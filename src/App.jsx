@@ -37,6 +37,11 @@ const isArchiveHeaderTarget = (target) =>
   && target instanceof Element
   && Boolean(target.closest('.archive-header'));
 
+const isProductListTarget = (target) =>
+  typeof Element !== 'undefined'
+  && target instanceof Element
+  && Boolean(target.closest('.product-list'));
+
 const createAssetLookup = (modules, rootDirectory) => {
   const byPath = {};
   const byFileName = {};
@@ -330,6 +335,10 @@ export default function App() {
 
   useEffect(() => {
     const handleWheel = (event) => {
+      if (isDetailOpen && isProductListTarget(event.target)) {
+        return;
+      }
+
       event.preventDefault();
 
       if (isModalOpen) {
