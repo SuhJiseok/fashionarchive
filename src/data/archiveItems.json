@@ -11,8 +11,10 @@
                           "tags":  [
                                        "BLACK",
                                        "PADDED",
-                                       "MATTE",
-                                       "VOLUME"
+                                       "PUFFER",
+                                       "NYLON SHELL",
+                                       "MATTE FINISH",
+                                       "HIGH COLLAR"
                                    ]
                       },
                       {
@@ -21,10 +23,12 @@
                           "name":  "Navy Hooded Zip-Up",
                           "description":  "Dark navy hooded zip-up layered under the padded jacket.",
                           "tags":  [
-                                       "NAVY",
-                                       "HOODIE",
-                                       "LAYERED",
-                                       "CASUAL"
+                                       "DEEP NAVY",
+                                       "ZIP-UP HOODIE",
+                                       "COTTON BLEND",
+                                       "DRAWSTRING",
+                                       "LAYERED MID",
+                                       "DARK INNER"
                                    ]
                       },
                       {
@@ -33,10 +37,12 @@
                           "name":  "White Crossbody Bag",
                           "description":  "Compact white crossbody bag worn across the front.",
                           "tags":  [
-                                       "WHITE",
+                                       "OFF WHITE",
                                        "CROSSBODY",
-                                       "COMPACT",
-                                       "CLEAN"
+                                       "COMPACT BAG",
+                                       "FRONT CARRY",
+                                       "SOFT CURVE",
+                                       "CLEAN ACCENT"
                                    ]
                       },
                       {
@@ -45,10 +51,12 @@
                           "name":  "Light Blue Distressed Jeans",
                           "description":  "Light blue denim with a loose fit and distressed finish.",
                           "tags":  [
-                                       "LIGHT BLUE",
-                                       "DENIM",
-                                       "DISTRESSED",
-                                       "LOOSE FIT"
+                                       "PALE BLUE",
+                                       "WASHED DENIM",
+                                       "DISTRESSED KNEE",
+                                       "LOOSE STRAIGHT",
+                                       "FADED TEXTURE",
+                                       "RELAXED FIT"
                                    ]
                       },
                       {
@@ -57,10 +65,12 @@
                           "name":  "Pants Keychain",
                           "description":  "Metal keychain accessory attached to the denim waist.",
                           "tags":  [
-                                       "SILVER",
-                                       "METAL",
-                                       "UTILITY",
-                                       "ACCENT"
+                                       "SILVER TONE",
+                                       "METAL CHAIN",
+                                       "WAIST ACCENT",
+                                       "UTILITY DETAIL",
+                                       "HARDWARE",
+                                       "MOVEMENT"
                                    ]
                       },
                       {
@@ -72,7 +82,9 @@
                                        "BLACK",
                                        "LEATHER",
                                        "GLOVES",
-                                       "WINTER"
+                                       "WINTER",
+                                       "SLEEK SURFACE",
+                                       "SHARP ACCENT"
                                    ]
                       },
                       {
@@ -81,10 +93,12 @@
                           "name":  "Dark Burgundy Boat Shoes",
                           "description":  "Deep burgundy boat shoes grounding the muted outfit palette.",
                           "tags":  [
-                                       "BURGUNDY",
-                                       "BOAT SHOES",
-                                       "LEATHER",
-                                       "DARK TONE"
+                                       "DEEP BURGUNDY",
+                                       "BOAT SHOE",
+                                       "LEATHER UPPER",
+                                       "DARK SOLE",
+                                       "LOW PROFILE",
+                                       "PREPPY EDGE"
                                    ]
                       }
                   ]
