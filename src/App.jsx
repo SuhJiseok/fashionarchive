@@ -223,6 +223,7 @@ export default function App() {
   const [isDetailOpen, setIsDetailOpen] = useState(false);
   const [isMobileInfoOpen, setIsMobileInfoOpen] = useState(false);
   const [expandedProductId, setExpandedProductId] = useState(null);
+  const [selectedProductId, setSelectedProductId] = useState(null);
   const [activeView, setActiveView] = useState('side');
   const activeIndexRef = useRef(activeIndex);
   const archivePageRef = useRef(null);
@@ -291,6 +292,9 @@ export default function App() {
     [activeIndex, activeItem.id, activeViewImages, fallbackView, isDetailOpen, items, resolvedActiveView],
   );
   const isProductInfoVisible = isDetailOpen && (!isMobileViewport || isMobileInfoOpen);
+  const selectedProduct = activeItem.products.find(
+    (product) => product.id === selectedProductId,
+  );
 
   useEffect(() => {
     activeIndexRef.current = activeIndex;
@@ -301,6 +305,7 @@ export default function App() {
     setExpandedProductId(null);
     setIsCodeGroupMode(false);
     setIsMobileInfoOpen(false);
+    setSelectedProductId(null);
   }, [activeIndex, isDetailOpen]);
 
   useEffect(() => {
@@ -310,6 +315,7 @@ export default function App() {
     }
 
     setIsMobileInfoOpen(false);
+    setSelectedProductId(null);
   }, [isModalOpen]);
 
   const moveToIndex = useCallback(
@@ -335,6 +341,11 @@ export default function App() {
 
   useEffect(() => {
     const handleWheel = (event) => {
+      if (selectedProduct) {
+        event.preventDefault();
+        return;
+      }
+
       if (isDetailOpen && isProductListTarget(event.target)) {
         return;
       }
@@ -399,10 +410,18 @@ export default function App() {
 
     window.addEventListener('wheel', handleWheel, { passive: false });
     return () => window.removeEventListener('wheel', handleWheel);
-  }, [activeItem, isDetailOpen, isModalOpen, items.length, moveToIndex]);
+  }, [activeItem, isDetailOpen, isModalOpen, items.length, moveToIndex, selectedProduct]);
 
   useEffect(() => {
     const handleKeyDown = (event) => {
+      if (selectedProduct) {
+        if (event.key === 'Escape') {
+          setSelectedProductId(null);
+        }
+
+        return;
+      }
+
       if (isModalOpen) {
         if (event.key === 'Escape') {
           setIsModalOpen(false);
@@ -428,7 +447,7 @@ export default function App() {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isDetailOpen, isModalOpen, moveToIndex]);
+  }, [isDetailOpen, isModalOpen, moveToIndex, selectedProduct]);
 
   const handleMainCardKeyDown = useCallback((event) => {
     if (event.key !== 'Enter' && event.key !== ' ') return;
@@ -799,12 +818,19 @@ export default function App() {
                     <div className="product-detail-inner">
                       <div className="product-thumb-frame">
                         {product.productImageSrc ? (
-                          <img
-                            className="product-image"
-                            src={product.productImageSrc}
-                            alt=""
-                            draggable="false"
-                          />
+                          <button
+                            className="product-image-button"
+                            type="button"
+                            aria-label={`${product.name} detail`}
+                            onClick={() => setSelectedProductId(product.id)}
+                          >
+                            <img
+                              className="product-image"
+                              src={product.productImageSrc}
+                              alt=""
+                              draggable="false"
+                            />
+                          </button>
                         ) : (
                           <span className="product-image-placeholder">NO IMAGE</span>
                         )}
@@ -825,6 +851,57 @@ export default function App() {
           </div>
         )}
       </aside>
+
+      {selectedProduct && (
+        <section
+          className="product-lightbox-layer"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="product-lightbox-title"
+        >
+          <button
+            className="product-lightbox-backdrop"
+            type="button"
+            aria-label="Close product detail"
+            onClick={() => setSelectedProductId(null)}
+          />
+
+          <div className="product-lightbox">
+            <button
+              className="product-lightbox-close"
+              type="button"
+              aria-label="Close product detail"
+              onClick={() => setSelectedProductId(null)}
+            >
+              <X aria-hidden="true" strokeWidth={1.6} />
+            </button>
+
+            <div className="product-lightbox-image-frame">
+              <img
+                className="product-lightbox-image"
+                src={selectedProduct.productImageSrc}
+                alt=""
+                draggable="false"
+              />
+            </div>
+
+            <div className="product-lightbox-copy">
+              <p className="product-lightbox-code">{activeItem.code}</p>
+              {selectedProduct.category && (
+                <p className="product-lightbox-category">{selectedProduct.category}</p>
+              )}
+              <h2 className="product-lightbox-title" id="product-lightbox-title">
+                {selectedProduct.name}
+              </h2>
+              {selectedProduct.description && (
+                <p className="product-lightbox-description">
+                  {selectedProduct.description}
+                </p>
+              )}
+            </div>
+          </div>
+        </section>
+      )}
 
       <section
         className="carousel-shell"
