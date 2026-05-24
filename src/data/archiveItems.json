@@ -107,7 +107,76 @@
         "code":  "ST-FW-002",
         "label":  "img2",
         "items":  [
-
+                      {
+                          "id":  "hoodie",
+                          "category":  "TOP",
+                          "name":  "Black Zip-Up Hoodie",
+                          "description":  "Black zip-up hoodie with a relaxed cropped length and soft streetwear volume.",
+                          "tags":  [
+                                       "BLACK",
+                                       "ZIP-UP",
+                                       "HOODIE",
+                                       "COTTON FLEECE",
+                                       "DROPPED SHOULDER",
+                                       "RELAXED CROP"
+                                   ]
+                      },
+                      {
+                          "id":  "tee",
+                          "category":  "INNER",
+                          "name":  "White Layered T-Shirt",
+                          "description":  "Clean white T-shirt layered under the hoodie for a sharp hem contrast.",
+                          "tags":  [
+                                       "WHITE",
+                                       "CREW NECK",
+                                       "COTTON JERSEY",
+                                       "LAYERED HEM",
+                                       "CLEAN BASE",
+                                       "LIGHT CONTRAST"
+                                   ]
+                      },
+                      {
+                          "id":  "denim",
+                          "category":  "BOTTOM",
+                          "name":  "Light Blue Wide Denim",
+                          "description":  "Light washed wide denim with subtle distressing and a soft patterned surface.",
+                          "tags":  [
+                                       "LIGHT BLUE",
+                                       "WASHED DENIM",
+                                       "WIDE LEG",
+                                       "SUBTLE DISTRESS",
+                                       "TEXTURED WASH",
+                                       "STACKED HEM"
+                                   ]
+                      },
+                      {
+                          "id":  "belt",
+                          "category":  "ACCESSORY",
+                          "name":  "Black Leather Belt",
+                          "description":  "Slim black belt creating a quiet break between the layered top and loose denim.",
+                          "tags":  [
+                                       "BLACK",
+                                       "LEATHER",
+                                       "SLIM BELT",
+                                       "WAIST DETAIL",
+                                       "MINIMAL BUCKLE",
+                                       "DARK LINE"
+                                   ]
+                      },
+                      {
+                          "id":  "shoes",
+                          "category":  "SHOES",
+                          "name":  "Black Chunky Sneakers",
+                          "description":  "Black low-profile chunky sneakers grounding the wide denim with a heavier sole.",
+                          "tags":  [
+                                       "BLACK",
+                                       "CHUNKY SOLE",
+                                       "LOW TOP",
+                                       "MIXED PANEL",
+                                       "SPORTY BASE",
+                                       "HEAVY BALANCE"
+                                   ]
+                      }
                   ]
     },
     {
