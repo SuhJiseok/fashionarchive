@@ -591,6 +591,38 @@ button {
   line-height: 1.45;
 }
 
+.product-detail-copy {
+  display: flex;
+  align-self: start;
+  min-width: 0;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.product-tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.product-tag {
+  display: inline-flex;
+  min-height: 20px;
+  align-items: center;
+  border: 1px solid #d9d9d9;
+  border-radius: 999px;
+  color: #6d6d6d;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1;
+  padding: 0 9px;
+  white-space: nowrap;
+}
+
 .product-lightbox-layer {
   position: absolute;
   inset: 0;
@@ -701,6 +733,19 @@ button {
   font-weight: 500;
   letter-spacing: 0;
   line-height: 1.55;
+}
+
+.product-lightbox-tags {
+  margin-top: 28px;
+  gap: 8px;
+}
+
+.product-lightbox-tags .product-tag {
+  min-height: 24px;
+  border-color: #d1d1d1;
+  color: #4f4f4f;
+  font-size: 10px;
+  padding: 0 11px;
 }
 
 @keyframes lightbox-fade-in {

@@ -7,43 +7,85 @@
                           "id":  "outer",
                           "category":  "OUTER",
                           "name":  "Black Padded Jacket",
-                          "description":  "Matte black padded outerwear with a relaxed, rounded volume."
+                          "description":  "Matte black padded outerwear with a relaxed, rounded volume.",
+                          "tags":  [
+                                       "BLACK",
+                                       "PADDED",
+                                       "MATTE",
+                                       "VOLUME"
+                                   ]
                       },
                       {
                           "id":  "hoodie",
                           "category":  "TOP",
                           "name":  "Navy Hooded Zip-Up",
-                          "description":  "Dark navy hooded zip-up layered under the padded jacket."
+                          "description":  "Dark navy hooded zip-up layered under the padded jacket.",
+                          "tags":  [
+                                       "NAVY",
+                                       "HOODIE",
+                                       "LAYERED",
+                                       "CASUAL"
+                                   ]
                       },
                       {
                           "id":  "bag",
                           "category":  "BAG",
                           "name":  "White Crossbody Bag",
-                          "description":  "Compact white crossbody bag worn across the front."
+                          "description":  "Compact white crossbody bag worn across the front.",
+                          "tags":  [
+                                       "WHITE",
+                                       "CROSSBODY",
+                                       "COMPACT",
+                                       "CLEAN"
+                                   ]
                       },
                       {
                           "id":  "denim",
                           "category":  "BOTTOM",
                           "name":  "Light Blue Distressed Jeans",
-                          "description":  "Light blue denim with a loose fit and distressed finish."
+                          "description":  "Light blue denim with a loose fit and distressed finish.",
+                          "tags":  [
+                                       "LIGHT BLUE",
+                                       "DENIM",
+                                       "DISTRESSED",
+                                       "LOOSE FIT"
+                                   ]
                       },
                       {
                           "id":  "keychain",
                           "category":  "ACCESSORY",
                           "name":  "Pants Keychain",
-                          "description":  "Metal keychain accessory attached to the denim waist."
+                          "description":  "Metal keychain accessory attached to the denim waist.",
+                          "tags":  [
+                                       "SILVER",
+                                       "METAL",
+                                       "UTILITY",
+                                       "ACCENT"
+                                   ]
                       },
                       {
                           "id":  "gloves",
                           "category":  "ACCESSORY",
                           "name":  "Black Leather Gloves",
-                          "description":  "Black leather gloves adding a sharp winter accent."
+                          "description":  "Black leather gloves adding a sharp winter accent.",
+                          "tags":  [
+                                       "BLACK",
+                                       "LEATHER",
+                                       "GLOVES",
+                                       "WINTER"
+                                   ]
                       },
                       {
                           "id":  "shoes",
                           "category":  "SHOES",
                           "name":  "Dark Burgundy Boat Shoes",
-                          "description":  "Deep burgundy boat shoes grounding the muted outfit palette."
+                          "description":  "Deep burgundy boat shoes grounding the muted outfit palette.",
+                          "tags":  [
+                                       "BURGUNDY",
+                                       "BOAT SHOES",
+                                       "LEATHER",
+                                       "DARK TONE"
+                                   ]
                       }
                   ]
     },

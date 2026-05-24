@@ -181,10 +181,27 @@ const generateArchiveItems = () =>
       views,
       products: (item.items ?? []).map((product) => ({
         ...product,
+        tags: Array.isArray(product.tags)
+          ? product.tags.map((tag) => String(tag).trim()).filter(Boolean)
+          : [],
         productImageSrc: resolveProductImage(code, product),
       })),
     };
   });
+
+function ProductTags({ tags, className = '' }) {
+  if (!tags?.length) return null;
+
+  return (
+    <ul className={`product-tag-list ${className}`.trim()} aria-label="Product keywords">
+      {tags.map((tag) => (
+        <li className="product-tag" key={tag}>
+          {tag}
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 const detailIcons = viewTypes.map((viewType) => ({
   ...viewType,
@@ -836,9 +853,12 @@ export default function App() {
                         )}
                       </div>
 
-                      {product.description && (
-                        <p className="product-description">{product.description}</p>
-                      )}
+                      <div className="product-detail-copy">
+                        {product.description && (
+                          <p className="product-description">{product.description}</p>
+                        )}
+                        <ProductTags tags={product.tags} />
+                      </div>
                     </div>
                   </div>
                 </li>
@@ -898,6 +918,10 @@ export default function App() {
                   {selectedProduct.description}
                 </p>
               )}
+              <ProductTags
+                tags={selectedProduct.tags}
+                className="product-lightbox-tags"
+              />
             </div>
           </div>
         </section>
