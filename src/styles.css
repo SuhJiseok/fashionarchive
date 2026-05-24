@@ -1568,12 +1568,12 @@ button {
 
   .product-lightbox-image-frame {
     min-height: 58dvh;
-    padding: 34px 26px 22px;
+    padding: 0;
   }
 
   .product-lightbox-image {
-    max-height: 52dvh;
-    transform: none;
+    max-height: none;
+    transform: scale(1.08);
   }
 
   .product-lightbox-copy {
