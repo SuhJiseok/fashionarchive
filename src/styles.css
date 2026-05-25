@@ -1617,9 +1617,9 @@ button {
   }
 
   .product-info-panel .product-tag {
-    border-color: #111111;
-    background: #111111;
-    color: #ffffff;
+    border-color: #1b1d22;
+    background: #1b1d22;
+    color: #616570;
   }
 
   .product-lightbox-layer {
@@ -1652,9 +1652,9 @@ button {
   }
 
   .product-lightbox-tags .product-tag {
-    border-color: #111111;
-    background: #111111;
-    color: #ffffff;
+    border-color: #1b1d22;
+    background: #1b1d22;
+    color: #616570;
   }
 
   .product-lightbox-code {
