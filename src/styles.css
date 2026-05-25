@@ -1616,6 +1616,12 @@ button {
     min-height: clamp(142px, 42vw, 172px);
   }
 
+  .product-info-panel .product-tag {
+    border-color: #7a7a7a;
+    background: rgb(255 255 255 / 38%);
+    color: #111111;
+  }
+
   .product-lightbox-layer {
     padding: 18px;
   }
@@ -1643,6 +1649,11 @@ button {
 
   .product-lightbox-tags {
     padding-top: 26px;
+  }
+
+  .product-lightbox-tags .product-tag {
+    border-color: #7a7a7a;
+    color: #111111;
   }
 
   .product-lightbox-code {
